@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'item.dart';
 
@@ -22,6 +21,9 @@ class CardWidget extends StatelessWidget {
             SizedBox(height: 10,),
             Text(item.name),
             SizedBox(height: 10,),
+            SafeArea(child: SafeArea(
+              child: Text("Asass"),
+            )),
             TextButton.icon(
                 onPressed: delete,
                 icon: Icon(Icons.delete),
