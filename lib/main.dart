@@ -2,18 +2,19 @@ import 'package:brgain/item.dart';
 import 'package:brgain/item_list.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
-// import 'package:brgain/home.dart';
+import 'package:brgain/home.dart';
 import 'package:brgain/login.dart';
+import 'package:brgain/signup.dart';
 
 import 'card_widget.dart';
 
 void main() => runApp(MaterialApp(
       home: Login(),
-      // routes: {
-      //   // "/" : (context ) => Home(),
-      //   "/login": (context) => Login()
-      //   // "/q" : (context) => QuoteList(),
-      // },
+      routes: {
+        "/home" : (context ) => Home(),
+        // "/login": (context) => Login()
+        "/signup": (context) => Signup()
+      },
     ));
 
 
