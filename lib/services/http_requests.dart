@@ -8,6 +8,7 @@ class HttpRequests{
 
   static String getLoginUrl() =>  baseUrl + "user/login";
   static String getRegisterUrl() =>  baseUrl + "user/register";
+  static String getAllStores() =>  baseUrl + "store/all";
 
   static Future<Map> loginUser(String email, String password) async {
     print("inside login user");
@@ -36,6 +37,15 @@ class HttpRequests{
     Response response =  await post(Uri.parse(url));
     Map data = convert.jsonDecode(response.body);
     print(data);
+    return data;
+  }
+
+  static Future<Map> getAllStoresFromAPI() async {
+    print("inside get all stores");
+    String url = getAllStores();
+    print(url);
+    Response response =  await get(Uri.parse(url));
+    Map data = convert.jsonDecode(response.body);
     return data;
   }
 

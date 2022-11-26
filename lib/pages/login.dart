@@ -1,6 +1,7 @@
+import 'package:brgain/models/store.dart';
 import 'package:flutter/material.dart';
-import 'services/http_requests.dart';
-import 'services/helper_functions.dart';
+import '../services/http_requests.dart';
+import '../services/helper_functions.dart';
 import 'package:validators/validators.dart';
 
 
@@ -147,13 +148,20 @@ class _LoginState extends State<Login> {
       Map userData  = await HttpRequests.loginUser(emailController.text, passwordController.text);
       if(userData['success'].toString() == "false"){
         showSnackBar(context, userData['errorMessage']);
-      }else{
-        Navigator.pushReplacementNamed(context, "/home", arguments: {
-          'user' : userData['data']
-        });
-        // print(userData['data']['userName']);
+        return;
       }
+
+      // Navigator.pushReplacementNamed(context, "/home", arguments: {
+      //   'user' : userData['data']
+      // });
+
+      List<Store> storeList = await Store.getAllStores() ;
+      Navigator.pushReplacementNamed(context, "/storePicker", arguments: {
+        'stores' :  storeList
+      });
+
     }catch(e){
+      print(e);
       showSnackBar(context, "unable to login");
     }
   }
