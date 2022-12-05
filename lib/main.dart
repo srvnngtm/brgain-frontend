@@ -1,6 +1,7 @@
 import 'package:brgain/item.dart';
 import 'package:brgain/item_list.dart';
 import 'package:brgain/pages/store_picker.dart';
+import 'package:brgain/services/route_generator.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
 import 'package:brgain/pages/home.dart';
@@ -10,14 +11,19 @@ import 'card_widget.dart';
 
 void main() => runApp(MaterialApp(
       // home: Login(),
-  home: Login(),
-      routes: {
-        "/home" : (context ) => Home(),
-        // "/login": (context) => Login()
-        "/signup": (context) => Signup(),
-        "/storePicker": (context) => StorePicker(),
-      },
-    ));
+  // home: Home(),
+  //     routes: {
+  //       // "/home" : (context ) => Home(),
+  //       "/login": (context) => Login(),
+  //       "/signup": (context) => Signup(),
+  //       "/storePicker": (context) => StorePicker(),
+  //     },
+  //   )
+    initialRoute: '/home',
+onGenerateRoute: RouteGenerator.generateRoute
+),
+
+);
 
 
 
@@ -28,7 +34,7 @@ void main() => runApp(MaterialApp(
 //   State<QuoteList> createState() => _QuoteListState();
 // }
 
-//
+
 // class _QuoteListState extends State<QuoteList> {
 //
 //   List<Item> items = ItemList().getItemList();

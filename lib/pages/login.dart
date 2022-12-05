@@ -32,7 +32,7 @@ class _LoginState extends State<Login> {
           Container(
             padding: EdgeInsets.all(40),
             margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
-            child: Text(
+            child: const Text(
               "Login",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -150,15 +150,13 @@ class _LoginState extends State<Login> {
         showSnackBar(context, userData['errorMessage']);
         return;
       }
+      Navigator.of(context).pushNamed('/home');
+      Navigator.pushReplacementNamed(context, "/home", arguments: {'user' : userData['data']});
 
-      // Navigator.pushReplacementNamed(context, "/home", arguments: {
-      //   'user' : userData['data']
+      // List<Store> storeList = await Store.getAllStores() ;
+      // Navigator.pushReplacementNamed(context, "/storePicker", arguments: {
+      //   'stores' :  storeList
       // });
-
-      List<Store> storeList = await Store.getAllStores() ;
-      Navigator.pushReplacementNamed(context, "/storePicker", arguments: {
-        'stores' :  storeList
-      });
 
     }catch(e){
       print(e);
