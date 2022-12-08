@@ -1,4 +1,7 @@
+import 'package:brgain/pages/categories_page.dart';
 import 'package:brgain/pages/home.dart';
+import 'package:brgain/pages/item_entries_page.dart';
+import 'package:brgain/pages/items_page.dart';
 import 'package:brgain/pages/login.dart';
 import "package:flutter/material.dart";
 
@@ -13,6 +16,12 @@ class RouteGenerator {
         return _errorRoute();
       case '/login':
         return MaterialPageRoute(builder: (_) => Login());
+      case '/category':
+        return MaterialPageRoute(builder: (_) => CategoriesPage( data : args));
+      case '/items':
+        return MaterialPageRoute(builder: (_) => ItemsPage(data: args));
+      case '/itemEntries':
+        return MaterialPageRoute(builder: (_) => ItemEntriesPage(data: args));
       default :
         return _errorRoute();
     }

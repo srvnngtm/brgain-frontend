@@ -1,4 +1,4 @@
-import 'package:brgain/item.dart';
+import 'package:brgain/models/item.dart';
 import 'package:brgain/item_list.dart';
 import 'package:brgain/pages/store_picker.dart';
 import 'package:brgain/services/route_generator.dart';

@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:brgain/services/http_requests.dart';
 import 'package:brgain/pages/NavDrawer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:brgain/models/category.dart';
+
+
 
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -35,7 +38,7 @@ class _HomeState extends State<Home> {
       initHomePageData().then((value) => {
             // widget.loginUser = value['data'],
             // setState(() {
-              loginUser = value['data'];
+              widget.loginUser = value['data']
             // })
           });
     } else {
@@ -88,14 +91,19 @@ class _HomeState extends State<Home> {
                 color: Colors.red,
               ),
               child: ElevatedButton(
-                onPressed: ()=>{},
-                child: const Text('Login'),
+                onPressed: ()=>{onPressedCategories(context)},
+                child: const Text('Categories',
+                style: TextStyle(
+                  fontSize: 35,
+
+                ),),
               ),
 
             )
           ],
         ));
   }
+
 
 
 
@@ -166,5 +174,18 @@ void showSnackBar(BuildContext context, String text) {
   // Find the Scaffold in the widget tree and use it to show a SnackBar.
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
+
+ void  onPressedCategories(BuildContext context) async {
+  try{
+    List<Category> allCategories = await Category.getAllCategories();
+    Navigator.pushNamed(context, "/category", arguments: {"categories" : allCategories});
+
+  }catch(e){
+    print(e);
+    showSnackBar(context, "unable to fetch Categories");
+  }
+}
+
+
 
 
